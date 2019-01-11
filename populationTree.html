@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Test Population Tree for the AGC project ">
+    <meta name="format-detection" content="telephone=no">
+    <title>AGC - Population Tree</title>
+    <!--
+
+        This borrows heavily from Mike Bostock's take on the population pyramid
+        Many thanks and see http://bl.ocks.org/mbostock/4062085 for details
+
+    -->
+</head>
+<link rel="stylesheet" href="popstyle.css">
+
+
+<body onload="hookEvent('easel', 'mousewheel', MouseWheel)">
+
+<div id="wrapper">
+
+    <div id="easel" ondblclick="resetClicked()"
+         ontouchstart="touchStart(event);"
+         ontouchmove="touchMove(event);"
+         ontouchend="touchEnd(event);">
+
+        <p class="spinner hourglass">Loading Data</p>
+
+        <p class="fineprint hourglass">If the data still has not loaded after a minute or so, <br>
+            please make sure JavaScripts are enabled <br>
+            and you are using a modern browser. Chrome version 58.0.3029.110 (64-bit) is recommended</p>
+
+        <!--  click event for that button is added to the attached SVG where the mini outline goes
+            see function outline()
+        -->
+        <div id="legend" class="xl"></div>
+
+
+    </div>
+    <div id="sliderHolder" class="xl noPrint"> </div>
+
+    <div id="dashBoard" >
+        <div id = "genStatsframe">
+            <table id = "genStatsTable" >
+                <tr class="bottom-border" >
+                    <td class="right-border"></td>
+                    <td class="genStatsHeaderFont">The baby boomers (1946-1965)</td>
+                    <td class="genStatsHeaderFont">Generation X (1966-1980)</td>
+                    <td class="genStatsHeaderFont">The millenials (1981-2000)</td>
+                    <td class="genStatsHeaderFont">The centennials (2001-2015)</td>
+                </tr>
+                <tr>
+                    <td class="genStatsHeaderFont">Average fertility rates: </td>
+                    <td>2.86</td>
+                    <td>2.13</td>
+                    <td>1.76</td>
+                    <td>1.82</td>
+                </tr>
+                <tr class="bottom-border">
+                    <td class="genStatsHeaderFont">Life expectancy at 65: (M/F)</td>
+                    <td>77/80.3</td>
+                    <td>77.5/81.2</td>
+                    <td>79/83</td>
+                    <td>82/85</td>
+                </tr>
+            </table>
+        </div>
+        <div class="chartframe">
+            <div id="sra69" class="chartbar"></div>
+            <div id="sra67" class="chartbar"></div>
+            <div id="sra65" class="chartbar"></div>
+            <div class="totalpopbar"></div>
+            <p id="totalpoptext" ></p>
+            <div id="playbt"></div>
+        </div>
+
+    </div> <!-- end dashboard -->
+
+</div> <!-- end wrapper -->
+</body>
+
+<script src="d3.min.js"></script>
+<!--
+	D3 slider thanks to
+	http://thematicmapping.org/playground/d3/d3.slider/
+-->
+<script src="d3.slider.js"></script>
+<!--
+	thanks and all credit goes to to Mike Bostock and
+	https://bl.ocks.org/mbostock/4062085 for the script
+-->
+<script src="population.js"></script>
+</html>
